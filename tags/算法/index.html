@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>Tag: 测试2 | Fghk的博客</title>
+  <title>Tag: 算法 | Fghk的博客</title>
   <meta name="description" content="热衷折腾的普通宅男" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -48,23 +48,38 @@
     
     
     | 
-    <a href='/tags/Hexo/'>Hexo</a>,
+    <a href='/tags/算法/'>算法</a>,
     
-    <a href='/tags/测试2/'>测试2</a>
+    <a href='/tags/C/'>C++</a>
     
     
 </span>
-      <h2 class="post-title"><a href="/2023/01/26/测试2/">测试2</a></h2>
+      <h2 class="post-title"><a href="/2023/01/26/基础算法/">算法基础</a></h2>
     </header>
     <section class="post-excerpt">
       <p>
       
-        测试123456789import React from &#x27;react&#x27;;const Home = () =&gt; &#123;  return (    &lt;div&gt;      &lt;h1&gt;Hello World&lt;/h1&gt;    &lt;/div&gt;  )&#125;export default Home;
+        基础算法快速排序——分治
+确定分治点：q[l]，q[(l+r)&#x2F;2]，q[r]，随机
+
+调整区间：使第一个区间所有数小于等于 x，第二个区间所有数大于 x（_难点_）
+
+暴力做法：
+
+开数组 a[]，b[]
+对于 q[l~r]，小于 x 的数存入 a，大于等于 x 的数存入 b
+然后递归排序，将 a，b 内的数依次放入 q 中
+
+
+双指针做法：
+
+定义指针 i，j
+在 q[l~r]内，i 向右走，j 向左走，如果 i 指向的数
       
       </p>
       
       <p>
-          <a href="/2023/01/26/测试2/" class="excerpt-link">展开查看...</a>
+          <a href="/2023/01/26/基础算法/" class="excerpt-link">展开查看...</a>
       </p>
       
     </section>

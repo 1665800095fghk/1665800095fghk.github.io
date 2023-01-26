@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>算法基础 | Fghk的博客</title>
+  <meta name="description" content="热衷折腾的普通宅男" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Fghk的博客">
+
+  
+  
+  <link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="atom.xml">
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(https://github.com/1665800095fghk/images/blob/main/lxq.png?raw=true)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="https://github.com/1665800095fghk/images/blob/main/icon.jpg?raw=true" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Fghk的博客</h1>
+            <h2 class="blog-description">热衷折腾的普通宅男</h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2023-01-26T11:11:17.000Z" itemprop="datePublished">
+          2023-01-26
+      </time>
+    
+    
+    | 
+    <a href='/tags/算法/'>算法</a>,
+    
+    <a href='/tags/C/'>C++</a>
+    
+    
+</span>
+    <h1 class="post-title">算法基础</h1>
+    <section class="post-content">
+      <h1 id="基础算法"><a href="#基础算法" class="headerlink" title="基础算法"></a>基础算法</h1><h3 id="快速排序——分治"><a href="#快速排序——分治" class="headerlink" title="快速排序——分治"></a>快速排序——分治</h3><ol>
+<li><p>确定分治点：q[l]，q[(l+r)&#x2F;2]，q[r]，随机</p>
+</li>
+<li><p>调整区间：使第一个区间所有数小于等于 x，第二个区间所有数大于 x（_难点_）</p>
+</li>
+<li><p>暴力做法：</p>
+<ol>
+<li>开数组 a[]，b[]</li>
+<li>对于 q[l~r]，小于 x 的数存入 a，大于等于 x 的数存入 b</li>
+<li>然后递归排序，将 a，b 内的数依次放入 q 中</li>
+</ol>
+</li>
+<li><p>双指针做法：</p>
+<ol>
+<li>定义指针 i，j</li>
+<li>在 q[l~r]内，i 向右走，j 向左走，如果 i 指向的数大于等于 x，i 停下，如果 j 指向的数小于等于 x，j 停下，当 i，j 都停下时，交换 i，j 指向的数，继续执行，直到 i，j 相遇</li>
+<li>当 i，j 相遇后对 q[l，j]，q[i，r]进行递归</li>
+</ol>
+</li>
+<li><p>递归：递归处理左右两端</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> N = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> q[N];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">quick_sort</span><span class="params">(<span class="type">int</span> q[],<span class="type">int</span> l,<span class="type">int</span> r)</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(l==r)<span class="keyword">return</span>;</span><br><span class="line">  <span class="type">int</span> x=q[l],i=l<span class="number">-1</span>,j=r+<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span>(l&lt;r)&#123;</span><br><span class="line">    <span class="keyword">do</span> i++ <span class="keyword">while</span>(q[i]&lt;x);</span><br><span class="line">    <span class="keyword">do</span> j-- <span class="keyword">while</span>(q[j]&gt;x);</span><br><span class="line">    <span class="keyword">if</span>(i&lt;j)<span class="built_in">swap</span>(q[i],q[j]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//当x=q[l]时，如下写</span></span><br><span class="line">  <span class="built_in">quick_sort</span>(q,l,j);</span><br><span class="line">  <span class="built_in">quick_sort</span>(q,j+<span class="number">1</span>,r);</span><br><span class="line">  <span class="comment">//当x=q[r]时</span></span><br><span class="line">  <span class="built_in">quick_sort</span>(q,l,i<span class="number">-1</span>);</span><br><span class="line">  <span class="built_in">quick_sort</span>(q,i,r);</span><br><span class="line">  <span class="comment">//否则会出现边界问题</span></span><br><span class="line">  <span class="comment">//例如q[]=&#123;1,2&#125;</span></span><br><span class="line">  <span class="comment">//x=q[l]=1</span></span><br><span class="line">  <span class="comment">//quick_sort(q,l,i-1)=quick_sort(q,0,-1)</span></span><br><span class="line">  <span class="comment">//x=q[r]=2</span></span><br><span class="line">  <span class="comment">//quick_sort(q,j+1,r)=quick_sort(q,2,1)</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">  <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;q[i]);</span><br><span class="line">  <span class="built_in">quick_sort</span>(q,<span class="number">0</span>,n<span class="number">-1</span>);</span><br><span class="line">  <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,q[i]);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="归并排序——分治"><a href="#归并排序——分治" class="headerlink" title="归并排序——分治"></a>归并排序——分治</h3><ol>
+<li><p>确定分治点 mid&#x3D;(l+r)&#x2F;2</p>
+</li>
+<li><p>递归排序 left，right</p>
+</li>
+<li><p>归并——合而为一（_难点_）</p>
+<ol>
+<li>对于排序好的序列 left，right，取两个指针分别指向头部，并用 res 存储归并后的序列</li>
+<li>对两个指针所指向的数进行对比，将小的放入 res 中，并使指针+1，直到某一个数组为空，再将另一个数组接至 res 后面</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1000010</span>;</span><br><span class="line"><span class="type">int</span> q=[N],tmp[N];</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge_sort</span><span class="params">(<span class="type">int</span> q[],<span class="type">int</span> l,<span class="type">int</span> r)</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(l==r)<span class="keyword">return</span>;</span><br><span class="line">  <span class="type">int</span> mid=(l+r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">  <span class="built_in">merge_sort</span>(q,l,mid);</span><br><span class="line">  <span class="built_in">merge_sort</span>(q,mid+<span class="number">1</span>,r);</span><br><span class="line">  <span class="type">int</span> k=<span class="number">0</span>,i=l,j=mid+<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span>(i&lt;=mid &amp;&amp; j&lt;=r)</span><br><span class="line">    <span class="keyword">if</span>(q[i]&lt;=q[j])tmp[k++]=q[i++];</span><br><span class="line">		<span class="keyword">else</span> tmp[k++]=q[j++];</span><br><span class="line">  <span class="keyword">while</span>(i&lt;=mid)tmp[k++]=q[i++];</span><br><span class="line">  <span class="keyword">while</span>(j&lt;=r)tmp[k++]=q[j++];</span><br><span class="line">  <span class="keyword">for</span>(i=l,j=<span class="number">0</span>;i&lt;=r;i++,j++)q[i]=tmp[j];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">  <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;q[i]);</span><br><span class="line">  <span class="built_in">merge_sort</span>(q,<span class="number">0</span>,n<span class="number">-1</span>);</span><br><span class="line">  <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,q[i]);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="二分"><a href="#二分" class="headerlink" title="二分"></a>二分</h3><p>&#x3D;&#x3D;二分的本质不是单调性，有单调性一定可以二分，能二分不一定有单调性&#x3D;&#x3D;</p>
+<ol>
+<li><p>整数二分<br><img src="C:\Users\fghk\AppData\Roaming\Typora\typora-user-images\image-20230101233448362.png" alt="image-20230101233448362"><br>在区间 q[l~r]中定义了某种性质，性质使区间一分为二,红色区间不满足，绿色区间满足</p>
+<ol>
+<li><p>二分出红色边界</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">bsearch</span><span class="params">(<span class="type">int</span> l,<span class="type">int</span> r)</span></span>&#123;</span><br><span class="line">  <span class="keyword">while</span>(l&lt;r)&#123;</span><br><span class="line">    <span class="type">int</span> mid = (l+r+<span class="number">1</span>) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">check</span>(mid)) l=mid;</span><br><span class="line">    <span class="keyword">else</span> r=mid<span class="number">-1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>为什么 mid&#x3D;(l+r+1) &gt;&gt; 1;?<br>当 l&#x3D;r-1 时，(l+r)&gt;&gt;1&#x3D;l，如果 check&#x3D;true 的话 l&#x3D;mid&#x3D;l，便会进入死循环</p>
+</blockquote>
+</li>
+<li><p>二分出绿色边界</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">bsearch</span><span class="params">(<span class="type">int</span> l,<span class="type">int</span> r)</span></span>&#123;</span><br><span class="line">  <span class="keyword">while</span>(l&lt;r)&#123;</span><br><span class="line">    <span class="type">int</span> mid = (l+r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">check</span>(mid)) r = mid;</span><br><span class="line">    <span class="keyword">else</span> l = mid + <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Fghk</h4>
+    <p>一个热衷于折腾的普通宅男</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" target="_blank" rel="noopener" href="http://twitter.com/share?url=http://example.com/2023/01/26/基础算法/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=http://example.com/2023/01/26/基础算法/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" target="_blank" rel="noopener" href="https://plus.google.com/share?url=http://example.com/2023/01/26/基础算法/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <span class="page-number">•</span>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <a class="subscribe icon-feed" href="atom.xml"><span class="tooltip">Subscribe!</span></a>
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Fghk的博客</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" target="_blank" rel="noopener" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>
