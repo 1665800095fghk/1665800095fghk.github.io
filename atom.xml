@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-01-27T04:02:32.318Z</updated>
+  <updated>2023-01-27T06:03:45.349Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://example.com/2023/01/26/%E5%BE%AE%E7%A7%AF%E5%88%86-1/"/>
     <id>http://example.com/2023/01/26/%E5%BE%AE%E7%A7%AF%E5%88%86-1/</id>
     <published>2023-01-26T13:37:10.000Z</published>
-    <updated>2023-01-27T04:02:32.318Z</updated>
+    <updated>2023-01-27T06:03:45.349Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="UNITI-1-微分"><a href="#UNITI-1-微分" class="headerlink" title="UNITI_1 微分"></a>UNITI_1 微分</h1><h2 id="导数"><a href="#导数" class="headerlink" title="导数"></a>导数</h2><ul><li>几何角度<br>某曲线函数上一点P，坐标为$(x_0,y_0)$<br>$x_0$沿x轴移动距离$\Delta x$，其对应点为Q<br>定义割线为过点P到点Q的直线<br>随着点Q逐渐趋近于点P，割线将逐渐趋近于点P的切线<br>导数的几何意义为切线的斜率，即两点逼近下割线的斜率<br>导数的定义<script type="math/tex; mode=display">f^`(x) = \lim_{\Delta x \to 0}{\frac {\Delta f}{\Delta x}} = \lim_{\Delta x \to 0}{\frac {f(x_0+\Delta x)-f(x_0)}{\Delta x}}</script></li><li><p>物理角度  </p></li><li><p>导数的重要性  </p></li></ul><h2 id="如何求导任意函数"><a href="#如何求导任意函数" class="headerlink" title="如何求导任意函数"></a>如何求导任意函数</h2>]]></content>
+    <content type="html"><![CDATA[<h1 id="UNITI-1-微分"><a href="#UNITI-1-微分" class="headerlink" title="UNITI_1 微分"></a>UNITI_1 微分</h1><h2 id="导数"><a href="#导数" class="headerlink" title="导数"></a>导数</h2><ul><li>几何角度<br>某曲线函数上一点P，坐标为$(x_0,y_0)$<br>$x_0$沿x轴移动距离$\Delta x$，其对应点为Q<br>定义割线为过点P到点Q的直线<br>随着点Q逐渐趋近于点P，割线将逐渐趋近于点P的切线<br>导数的几何意义为切线的斜率，即两点逼近下割线的斜率<br>导数的定义<script type="math/tex; mode=display">f^′(x_0) = \lim_{\Delta x \to 0}{\frac {\Delta f}{\Delta x}} = \lim_{\Delta x \to 0}{\frac {f(x_0+\Delta x)-f(x_0)}{\Delta x}}</script><script type="math/tex; mode=display">其中{\frac {f(x_0+\Delta x)-f(x_0)}{\Delta x}}表示差商</script><script type="math/tex; mode=display">f^′={\frac {df}{dx}}={\frac {dy}{dx}}={\frac {d}{dx}}f={\frac {d}{dx}}y</script></li></ul><h3 id="Example1"><a href="#Example1" class="headerlink" title="Example1"></a>Example1</h3><blockquote><p>$函数求导f(x)={\frac {1}{x}}$  </p><script type="math/tex; mode=display">{\frac {\Delta y}{\Delta x}}={\frac {\frac {1}{x_0+\Delta x}+\frac {1}{x_0}}{\Delta x}}={\frac {1}{\Delta y}}({\frac {x_0-x_0-\Delta x}{(x_0+\Delta x)x_0}})={\frac {-\Delta x}{(x_0+\Delta x)x_0}}</script><p>取极限$x_0 \to 0$，可得  </p><script type="math/tex; mode=display">\lim_{\Delta x \to 0}{\frac {\Delta f}{\Delta x}} = {\frac {-1}{x_0^2}}</script></blockquote><h3 id="Example2"><a href="#Example2" class="headerlink" title="Example2"></a>Example2</h3><blockquote><p>$函数求导f(x)=x^n$  </p><script type="math/tex; mode=display">{\frac {\Delta f}{\Delta x}} = {\frac {(x_0+\Delta x)^n-x_0^n}{\Delta x}}={\frac {1}{\Delta x}}(x_0^2+nx_0^{n-1}\Delta x+O(\Delta x)^2-x_0^n)=(nx_n^{n-1}+O(\Delta x))</script><p>其中$O(\Delta x)^2$<br>取极限$x_0 \to 0$，可得</p><script type="math/tex; mode=display">\lim_{\Delta x \to 0}{\frac {\Delta f}{\Delta x}}=nx_0^{n-1}</script></blockquote><ul><li><p>物理角度  </p></li><li><p>导数的重要性  </p></li></ul><h2 id="如何求导任意函数"><a href="#如何求导任意函数" class="headerlink" title="如何求导任意函数"></a>如何求导任意函数</h2>]]></content>
     
     
       
