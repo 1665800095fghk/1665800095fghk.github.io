@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>数据结构_1 | Fghk的博客</title>
+  <meta name="description" content="热衷折腾的普通宅男" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Fghk的博客">
+
+  
+  
+  <link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="atom.xml">
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(https://github.com/1665800095fghk/images/blob/main/lxq.png?raw=true)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="https://github.com/1665800095fghk/images/blob/main/icon.jpg?raw=true" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Fghk的博客</h1>
+            <h2 class="blog-description">热衷折腾的普通宅男</h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2023-01-27T07:02:51.000Z" itemprop="datePublished">
+          2023-01-27
+      </time>
+    
+    
+    | 
+    <a href='/tags/数据结构/'>数据结构</a>,
+    
+    <a href='/tags/TypeScript/'>TypeScript</a>,
+    
+    <a href='/tags/JavaScript/'>JavaScript</a>
+    
+    
+</span>
+    <h1 class="post-title">数据结构_1</h1>
+    <section class="post-content">
+      <h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>首先写出数据结构的基础类</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">FghkArray</span>&lt;T&gt; &#123;</span><br><span class="line">  <span class="comment">// 当前使用了的容量</span></span><br><span class="line">  <span class="keyword">private</span> <span class="attr">size</span>: <span class="built_in">number</span>;</span><br><span class="line">  <span class="comment">// 存储的数据</span></span><br><span class="line">  <span class="keyword">private</span> <span class="attr">data</span>: T[];</span><br><span class="line">  <span class="comment">// FghkArray构造函数，传入参数为长度或传入数组</span></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">params?: <span class="built_in">number</span> | T[]</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="title class_">Array</span>.<span class="title function_">isArray</span>(params)) &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">data</span> = params;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">size</span> = params.<span class="property">length</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">data</span> = <span class="keyword">new</span> <span class="title class_">Array</span>(params ?? <span class="number">10</span>);</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">size</span> = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>完成几个基础方法的编写</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取数组中的元素个数</span></span><br><span class="line"><span class="title function_">getSize</span>(): <span class="built_in">number</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">size</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 获取数组容量</span></span><br><span class="line"><span class="title function_">getCapacity</span>(): <span class="built_in">number</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">data</span>.<span class="property">length</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 判断数组是否为空</span></span><br><span class="line"><span class="title function_">isEmpty</span>(): <span class="built_in">boolean</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">size</span> ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>插入元素方法编写<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在index位置插入一个元素e</span></span><br><span class="line"><span class="title function_">add</span>(<span class="params">index: <span class="built_in">number</span>, e: T</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span>(index &lt; <span class="number">0</span> || index &gt;= <span class="variable language_">this</span>.<span class="property">size</span>)&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&quot;添加元素错误，index范围出错&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 扩容</span></span><br><span class="line">  <span class="keyword">if</span>(<span class="variable language_">this</span>.<span class="property">size</span> === <span class="variable language_">this</span>.<span class="property">data</span>.<span class="property">length</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">resize</span>(<span class="number">2</span> * <span class="variable language_">this</span>.<span class="property">data</span>.<span class="property">length</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="variable language_">this</span>.<span class="property">size</span> - <span class="number">1</span>; i &gt;= index; i--) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">data</span>[i+<span class="number">1</span>] = <span class="variable language_">this</span>.<span class="property">data</span>[i];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">data</span>[index] = e;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">size</span>++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Fghk</h4>
+    <p>一个热衷于折腾的普通宅男</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" target="_blank" rel="noopener" href="http://twitter.com/share?url=http://example.com/2023/01/27/数据结构-1/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=http://example.com/2023/01/27/数据结构-1/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" target="_blank" rel="noopener" href="https://plus.google.com/share?url=http://example.com/2023/01/27/数据结构-1/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2023/01/26/%E5%BE%AE%E7%A7%AF%E5%88%86-1/">
+        微积分_1 →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <a class="subscribe icon-feed" href="atom.xml"><span class="tooltip">Subscribe!</span></a>
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Fghk的博客</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" target="_blank" rel="noopener" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>
