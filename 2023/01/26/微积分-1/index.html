@@ -70,14 +70,14 @@
 </ul>
 <p>导数在物理表现为变化率: $$\lim_{\Delta x \to 0}{\frac {\Delta y}{\Delta x}}&#x3D;{\frac {dy}{dx}}$$</p>
 <ul>
-<li>${\frac {\Delta y}{\Delta x}}$表示的是一种平均值  </li>
-<li>${\frac {dy}{dx}}$表示的是一种瞬时值  </li>
+<li>${\frac {\Delta y}{\Delta x}}$ 表示的是一种平均值  </li>
+<li>${\frac {dy}{dx}}$ 表示的是一种瞬时值  </li>
 <li>随着$\Delta x \to 0$，平均值将趋近于瞬时值</li>
 </ul>
 <h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><blockquote>
-<p>当q表示电荷时，${\frac {dq}{dt}}$表示瞬时电流<br>当s表示路程时，${\frac {ds}{dt}}$表示瞬时速度<br>瞬时变化率还可用于测量灵敏度</p>
+<p>当q表示电荷时， ${\frac {dq}{dt}}$ 表示瞬时电流<br>当s表示路程时， ${\frac {ds}{dt}}$ 表示瞬时速度<br>瞬时变化率还可用于测量灵敏度</p>
 </blockquote>
-<h2 id="极限"><a href="#极限" class="headerlink" title="极限"></a>极限</h2><h3 id="数列的极限"><a href="#数列的极限" class="headerlink" title="数列的极限"></a>数列的极限</h3><h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="极限可以描述变化的趋势，但不是所有趋势都可以用极限描述"><a href="#极限可以描述变化的趋势，但不是所有趋势都可以用极限描述" class="headerlink" title="极限可以描述变化的趋势，但不是所有趋势都可以用极限描述"></a>极限可以描述变化的趋势，但不是所有趋势都可以用极限描述</h3><blockquote>
+<h2 id="极限"><a href="#极限" class="headerlink" title="极限"></a>极限</h2><h3 id="极限可以描述变化的趋势，但不是所有趋势都可以用极限描述"><a href="#极限可以描述变化的趋势，但不是所有趋势都可以用极限描述" class="headerlink" title="极限可以描述变化的趋势，但不是所有趋势都可以用极限描述"></a>极限可以描述变化的趋势，但不是所有趋势都可以用极限描述</h3><blockquote>
 <p>极限的两种情况  </p>
 <ol>
 <li>简单模式：直接带入值<br>$$\lim_{x \to 1}{\frac {1}{x}}&#x3D;1$$ </li>
@@ -86,9 +86,49 @@
 </blockquote>
 <h3 id="极限逼近的方向"><a href="#极限逼近的方向" class="headerlink" title="极限逼近的方向"></a>极限逼近的方向</h3><blockquote>
 <ul>
-<li>左极限：$\lim_{x \to x_0^-}{f(x)}$其中$x&lt;x_0^-$  </li>
-<li>右极限：$\lim_{x \to x_0^+}{f(x)}$其中$x&gt;x_0^+$</li>
+<li>左极限：$\lim_{x \to x_0^-}{f(x)}$ 其中 $x&lt;x_0^-$   </li>
+<li>右极限：$\lim_{x \to x_0^+}{f(x)}$ 其中 $x&gt;x_0^+$</li>
 </ul>
+</blockquote>
+<h2 id="连续"><a href="#连续" class="headerlink" title="连续"></a>连续</h2><h3 id="函数-f-x-在点-x-0-处连续的定义"><a href="#函数-f-x-在点-x-0-处连续的定义" class="headerlink" title="函数$f(x)$在点$x_0$处连续的定义"></a>函数$f(x)$在点$x_0$处连续的定义</h3><p>$$<br>\lim_{x \to x_0}{f(x)}&#x3D;f(x_0)<br>$$</p>
+<blockquote>
+<p>满足定义的三个条件</p>
+<ul>
+<li>左右极限存在且相等 $\lim_{x\to x^-}{f(x)}&#x3D;\lim_{x\to x^+}{f(x)}$  </li>
+<li>函数 $f(x)$ 在 $x_0$ 处有定义  </li>
+<li>函数值 $f(x_0)$ 与极限值 $\lim_{x\to x_0}{f(x)}$ 相等</li>
+</ul>
+</blockquote>
+<h3 id="四种间断"><a href="#四种间断" class="headerlink" title="四种间断"></a>四种间断</h3><ol>
+<li>跳跃间断：左右极限存在且不相等</li>
+<li>可去间断：左右极限存在且相等，但不等于函数值<blockquote>
+<p>举例：  $\frac {sin(x)}{x}$  </p>
+<ul>
+<li>$\lim_{x\to 0}{\frac {sin(x)}{x}} &#x3D; 1$</li>
+<li>函数在 $x&#x3D;0$ 处无定义</li>
+</ul>
+</blockquote>
+</li>
+<li>无穷间断<blockquote>
+<p>举例： $\frac {1}{x}$</p>
+<ul>
+<li>$\lim_{x\to o^+}{\frac {1}{x}}&#x3D;\infty$</li>
+<li>$\lim_{x\to 0^-}{\frac {1}{x}}&#x3D;-\infty$</li>
+<li>奇函数 $\frac {1}{x}$ 求导后变成了偶函数</li>
+</ul>
+</blockquote>
+</li>
+<li>另类间断<blockquote>
+<p>无穷间断：$sin(\frac {1}{x})$</p>
+<ul>
+<li>随着 $x\to 0$ 函数 $\lim_{x\to 0}{f(x)}$ 将剧烈震荡  </li>
+<li>函数在 $x&#x3D;0$ 处不存在左极限与右极限</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<h3 id="可导必连续"><a href="#可导必连续" class="headerlink" title="可导必连续"></a>可导必连续</h3><blockquote>
+<p>证明<br>$$\lim_{x\to x_0}{f(x)}-f(x_0) &#x3D; \lim_{x\to 0}{\frac {f(x)-f(x_0)}{x-x_0}}(x-x_0)$$<br>$$&#x3D;\lim_{x\to x_0}{f^′(x)(x-x_0)}$$<br>$$&#x3D;f^′(x) \times 0$$<br>$$&#x3D;0$$<br>满足函数 $f(x)$ 在 $x_0$ 处连续的定义<br>$$\lim_{x\to x_0}{f(x)}&#x3D;f(x_0)$$</p>
 </blockquote>
 
     </section>
